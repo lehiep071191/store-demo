@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-sm-3">
+	</div> 
+   <div class = "col-sm-9">      
+    <div class="row row-cols-6" >
+	    <% Production.all.each_with_index do |production, i| %>
+	        <div class="d-flex flex-column text-center col-sm-2">
+	          <div>
+	            <%= link_to image_tag("https://i.pinimg.com/736x/67/37/3d/67373d4d12004cc8337fcfe1226698de.jpg", width: "100%" ), production_path(production), id: "count-#{production.id}", class: "click-in-production", data: {id: "#{production.id}"} %>
+	          <div class = ""><%= production.name %></div>
+	          </div>
+	        </div>
+	    <% end %>
+		</div>
+	</div>
+</div>
