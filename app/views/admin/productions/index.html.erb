@@ -1,0 +1,22 @@
+<div style = "margin-top: 150px">
+	<table id = 'customers' >
+		<% Production.all.each do |product|  %>
+			<tr>
+				<td>
+					<%= product.name %>
+				</td>
+				<td>
+					<%= product.brand %>
+				</td>
+				<td>
+					<%= time_ago_in_words(product.created_at) %>
+				</td>
+				<td style = "text-align: center">
+					<%= link_to admin_production_path(product) do  %>
+						<i class="fa fa-eye" style="font-size:24px"></i>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</div>

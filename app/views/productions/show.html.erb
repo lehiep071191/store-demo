@@ -1,0 +1,15 @@
+ <div class = "col-sm-9">
+	<div class="d-flex flex-column text-center col-sm-4 ">
+	  <div>
+	    <%= link_to image_tag("https://i.pinimg.com/736x/67/37/3d/67373d4d12004cc8337fcfe1226698de.jpg", width: "100%" ), production_path(@production), id: "count-#{@production.id}", class: "click-in-@production", data: {id: "#{@production.id}"} %>
+	  <div class = ""><%= @production.name %></div>
+	  </div>
+	</div>
+	<div class="d-flex flex-column text-center col-sm-4 ">
+		<% @production.production_details.each do |detail| %>
+		<p>	Color: <button><%= detail.color %></button></p>
+		<p>Rom: <button> <%= detail.rom %></button></p>
+		<p>Ram: <button>	 <%= detail.ram %></button></p>
+		<% end %>
+	</div>	
+</div>
