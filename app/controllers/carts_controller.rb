@@ -9,7 +9,7 @@ class CartsController < ApplicationController
 	def show
 	end	
 	def update
-		byebug
+
 			@production_detai = ProductionDetail.find_by(color: params[:color], rom: params[:rom], ram: params[:ram], production_id: params[:production_id]) 
 			quantity_production_detail = params[:quantity]
 			id_production_detail = @production_detai.id

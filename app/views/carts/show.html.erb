@@ -7,6 +7,10 @@
 					  <li class="active"><%=t ("carts.show.Cart")%></li>
 					</ol>
 				</div>
+			<% if current_cart.content == nil %>
+				Không có sản phẩm nào trong giỏ hàng
+					Quay về <%= link_to 'trang chủ', root_url %>
+			<% else %>	
 				<div class="table-responsive cart_info">
 					<table class="table table-condensed">
 						<thead>
@@ -25,13 +29,13 @@
 						</tbody>
 					</table>
 				</div>
-						<p class="dia_chi">
-							<%= link_to carts_path,
-								class: "btn btn-lg btn-primary", method: :get do %>
-								<%= t ("carts.show.BUY") %>
-							<% end %>
-						</p>
+				<p class="dia_chi">
+					<%= link_to carts_path,
+						class: "btn btn-lg btn-primary", method: :get do %>
+						<%= t ("carts.show.BUY") %>
+					<% end %>
+				</p>
 				
 			</div>
-
+			<% end %>
 		</section>
