@@ -1,5 +1,27 @@
-<% @production.production_details.each do |detail| %>
-	<p><%= detail.color %>
-	<%= detail.rom %>
-	<%= detail.ram %></p>
-<% end %>
+
+<table id = "customers">
+	<tr>
+		<th>
+			Màu Sắc
+		</th>
+		<th>
+			Bộ nhớ trong
+		</th>
+		<th>
+			Ram
+		</th>
+	</tr>
+	<% @production.production_details.each do |detail| %>
+		<tr>
+			<td>
+				<%= detail.color %>
+			</td>
+			<td>
+				<%= detail.rom %>
+			</td>
+			<td>
+				<%= detail.ram %>
+			</td>
+		</tr>	
+	<% end %>
+</table>

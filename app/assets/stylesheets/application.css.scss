@@ -39,3 +39,65 @@
   color: white;
 }
 
+.color_select input[type="radio"] {
+  display: none;
+}
+
+.color_select span {
+  display: inline-block;
+  padding: 5px;
+  font-size: 14px!important;
+  text-transform: uppercase;
+  border: 2px solid gold;
+  border-radius: 3px;
+  color: gold;
+}
+
+.color_select input[type="radio"]:checked + span {
+  background-color: gold;
+  color: black;
+}
+.rom_select input[type="radio"] {
+  display: none;
+}
+
+.rom_select span {
+  display: inline-block;
+  padding: 5px;
+  font-size: 14px!important;
+  text-transform: uppercase;
+  border: 2px solid gold;
+  border-radius: 3px;
+  color: gray;
+}
+
+.rom_select input[type="radio"]:checked + span {
+  background-color: skyblue;
+  color: red;
+}
+
+.ram_select input[type="radio"] {
+  display: none;
+}
+
+.ram_select span {
+  display: inline-block;
+  padding: 5px;
+  font-size: 14px!important;
+  text-transform: uppercase;
+  border: 2px solid gold;
+  border-radius: 3px;
+  color: gray;
+}
+
+.ram_select input[type="radio"]:checked + span {
+  background-color: skyblue;
+  color: red;
+}
+
+
+#notice-select{
+	color: red;
+}
+
+

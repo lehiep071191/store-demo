@@ -1,0 +1,60 @@
+<% if current_user.orders.present? %>
+	<% order.order_details.each do|order_detail| %>
+		<% production_detail= ProductionDetail.find_by order_detail.production_detail_id.to_s %>
+
+			<tr >
+				<td >
+				
+					<!--  <%=image_tag production_detail.product.image.first if production_detail.product.image.attached? %> -->
+				</td>
+				<td>
+					<h4><%= production_detail.production.name %></h4>
+				</td>
+				<td  >
+					<%= number_to_currency(production_detail.discount_price )%>
+				</td>
+
+				<td >
+					<input type="hidden" class= "value-size-<%= production_detail.id %>" value = "<%= production_detail.size %>" > 
+					<%= production_detail.size %>
+					
+					, <span id = "color-<%= production_detail.id %>" ><%= production_detail.color %></span>
+				</td>
+
+
+				<td class= "quality-correct">
+						
+						<%= order_detail.quality %>
+				</td>
+				<td>
+					<%= number_to_currency(production_detail.discount_price*order_detail.quality.to_i)%>
+					
+				</td>	
+				
+			</tr>
+	<% end %>	
+			<tr >
+				<td colspan="6" class="total-oder" >
+					<%= t(".total_price") %> 
+					<b><%=number_to_currency(order.total_price)%></b>
+				</td>	
+			</tr>
+			<tr class ="correct" >
+				<td class ="return-status" colspan="2"><%= order.order_status %></td>
+					
+				<td  colspan="4">
+					<%if order.Awaiting?%>
+						<input value="6" type="hidden" name="order[order_status]"
+							id= "order_order_status<%= order.id%>" >
+						<button_tag class= "cancel-order2 btn btn-success" 
+							data-id = "<%=order.id %>" name=""> 
+							<%= t("orders.order.cancel") %>
+						</button_tag> 
+		
+					<%end%>
+					<span class="text-correct">
+						<%= link_to "CHI TIET DON HANG", order_path(order) %>	
+					</span>
+				</td>
+			</tr>	
+<% end %>
