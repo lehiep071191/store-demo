@@ -1,16 +1,92 @@
-<div class="row">
+
+	
+<div class="container" style = "height: 30%">
+  
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <% @productions.each_with_index do |p,i| %>
+        <li data-target="#myCarousel" data-slide-to="0" class="<% if i == 0 %><%= 'active' %> <% end %>"></li>
+      <% end %>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <% @productions.each_with_index do |p,i| %>
+        <div class="item <% if i == 0 %><%= 'active' %> <% end %>">
+        	Đây là slide <%= i %>
+            <div class = 'row'>
+              <div class = "col-sm-3"> 
+                <% if p.url != nil || p.url == '' %>
+                  <%= image_tag(p.url, width: '80%') %>
+                <% else %>  
+                  <% image_tag('https://cdn.tgdd.vn/Products/Images/42/213033/iphone-12-pro-max-195420-015412-400x400.png', width: "80%" )%>
+                <% end %>  
+              </div>
+              <div class = "col-sm-9">
+               <b style = "font-size: 30px"> Tuyệt tác cầm tay</b><br>
+               <%= link_to 'Mua ngay', p %>
+              </div>
+            </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Left and right controls -->
+    <div id="linkcarousel" style = "display: none">
+      
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $('#myCarousel').mouseenter(function(){
+    $('#linkcarousel').show();
+  })
+   $('#myCarousel').mouseleave(function(){
+    $('#linkcarousel').hide();
+  })
+
+</script>
+
+
+
+
+<div class="row" style = "margin-top: 50px">
   <div class="col-sm-3">
+
 	</div> 
    <div class = "col-sm-9">      
     <div class="row row-cols-6" >
-	    <% Production.all.each_with_index do |production, i| %>
-	        <div class="d-flex flex-column text-center col-sm-2">
-	          <div>
-	            <%= link_to image_tag("https://i.pinimg.com/736x/67/37/3d/67373d4d12004cc8337fcfe1226698de.jpg", width: "100%" ), production_path(production), id: "count-#{production.id}", class: "click-in-production", data: {id: "#{production.id}"} %>
-	          <div class = ""><%= production.name %></div>
-	          </div>
-	        </div>
-	    <% end %>
-		</div>
+
+		    <% @productions.each_with_index do |production, i| %>
+		        <div class="d-flex flex-column text-center col-sm-2">
+		          <div>
+		          	<% if production.url.present? %>
+		            	<%= link_to image_tag( production.url, width: "100%" ), production_path(production), id: "count-#{production.id}", class: "click-in-production", data: {id: "#{production.id}"} %>
+		            <% else %>
+		            	<%= link_to image_tag('https://cdn.tgdd.vn/Products/Images/42/213033/iphone-12-pro-max-195420-015412-400x400.png', width: "100%" ), production_path(production), id: "count-#{production.id}", class: "click-in-production", data: {id: "#{production.id}"} %>
+		            <% end %>
+		          <div class = ""><%= production.name %></div>
+		          </div>
+		        </div>
+
+		    <% end %>  
+    	</div>
+
+    	<div id="page_links">
+			   <%= will_paginate @productions %>
+
+			</div>
+
 	</div>
 </div>
+
+<

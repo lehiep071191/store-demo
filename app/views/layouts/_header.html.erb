@@ -62,6 +62,9 @@ body {
       <% if current_user.admin? %>
         <%= link_to admin_home_path do %><span class="glyphicon glyphicon-log-out"></span> Admin</a><% end %>
       <% end %>
+      <% if user_signed_in? && current_user.orders.last.present? %>
+        <%= link_to t("orders.show.checkout"), order_path(current_user.orders.last) %></li>
+      <% end %> 
          <%= link_to cart_path(current_cart) do  %><i class="fa fa-shopping-cart"></i>Cart<% end %>
 
          <%= link_to destroy_user_session_path, method: :delete do %><span class="glyphicon glyphicon-log-out"></span> Logout</a><% end %>
@@ -70,5 +73,6 @@ body {
         <a href="/users/sign_up"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
         <a href="<%= new_user_session_path%>"><span class="glyphicon glyphicon-log-in"></span> Login</a>
       <% end %>
+     
   </div>
 </div>

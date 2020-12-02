@@ -92,17 +92,15 @@ $(document).on('click', '.button-cart', function(){
         datatype: "json",
         type: 'put',
         error: function(){ 
-            alert(I18n.t("evaluators.alert.login"));
-          
-            $("#add-login").click();
+           alert('yêu cầu chọn đầy đủ thông tin về sản phẩm')
         },
         success : function(data) { 
             if(!data.success&& !data.quantity){
               $("#notice-select").html(data.errors[0].message); 
   
             } else if(data.success){
+              alert('bạn đã đặt hàng thành công xin vui lòng kiểm trả trong giỏ hàng')
               
-              alert(I18n.t("evaluators.alert.cart"));
             }
         } 
 

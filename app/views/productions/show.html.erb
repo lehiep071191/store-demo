@@ -2,12 +2,15 @@
 	<div class="d-flex flex-column text-center col-sm-4 ">
 	  <div>
 	  	<% if @production.url.present? %>
-	    <%= link_to image_tag( @production.url , width: "100%" ), production_path(@production), id: "count-#{@production.id}", class: "click-in-@production", data: {id: "#{@production.id}"} %>
+	    	<%= link_to image_tag( @production.url , width: "100%" ), production_path(@production), id: "count-#{@production.id}", class: "click-in-@production", data: {id: "#{@production.id}"} %>
+	    <% else %>
+	    	<%= link_to image_tag('https://cdn.tgdd.vn/Products/Images/42/213033/iphone-12-pro-max-195420-015412-400x400.png' , width: "100%" ), production_path(@production), id: "count-#{@production.id}", class: "click-in-@production", data: {id: "#{@production.id}"} %>
 	    <% end %>
 	  <div class = ""><%= @production.name %></div>
 	  </div>
 	</div>
 	<div class="d-flex flex-column text-center col-sm-4 ">
+	<% if @production.production_details != [] %>	
 	<div>
 		<span>Thông Số</span>
 		<p>Màu Sắc: </p>	
@@ -44,14 +47,30 @@
 	
 	</div>	
 		<input type="number" name="quantity" value="1" id = "result-quantity" style = "width: 60px">
-		<button type="button" class="btn btn-fefault cart button-cart" style ="font-size: 15px;  ">
-			<i class="fa fa-shopping-cart"></i>
-			Add to cart
-		</button>	
-</div>
-<input type="hidden" name="production_id", id = "production_id", value = "<%= @production.id %>">
-<input type="hidden" name="cart" id = "cart_id" value = "<%= current_cart.id %>">
-<script type="text/javascript">
+		<%if user_signed_in? %>
+			<button type="button" class="btn btn-fefault cart button-cart" style ="font-size: 15px;  ">
+				<i class="fa fa-shopping-cart"></i>
+				Add to cart
+			</button>	
+		<% else %>
+			<div class="">
+			    <button class="btn btn-default " type="button" data-toggle="dropdown">
+			    	Add to Cart <i class="fa fa-shopping-cart"></i>
+			    <span class="caret"></span></button>
+			    <ul class="dropdown-menu">
+			      <b style = "font-size: 20px">Yêu Cầu Đăng Nhập </b>	
+			      <%= render 'shared/login_form' %>
+			    </ul>
+			  </div>
 
-	
-</script>
+		<% end %>
+</div>
+<% else  %>
+	<b style= "font-size: 30px; color: red"> Hàng Sắp Về </b>
+<% end %>		
+<% if user_signed_in? %>
+	<input type="hidden" name="production_id", id = "production_id", value = "<%= @production.id %>">
+	<input type="hidden" name="cart" id = "cart_id" value = "<%= current_cart.id %>">
+<% end %>
+
+
