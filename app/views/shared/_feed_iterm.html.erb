@@ -1,0 +1,41 @@
+<% if current_user.orders.present? %>
+	<% @order.order_details.each do|order_detail| %>
+		<% production_detail= ProductionDetail.find_by order_detail.production_detail_id.to_s %>
+
+			<tr class ="xoa-<%= production_detail.id %>">
+				<td class="cart_product">
+					<a href=""><img src="images/cart/one.png" alt=""></a>
+				</td>
+				<td class="cart_description">
+					<h4><%= production_detail.production.name %></h4>
+					<p >ID<%= production_detail.production.id %></p>
+				</td>
+				<td class="cart_price" >
+					<p id ="unit-price-<%= production_detail.id %>" ><%= number_to_currency(production_detail.price)%></p>
+				</td>
+
+				<td class="price">
+					
+					<%= production_detail.color %>
+					
+					, <span id = "color-<%= production_detail.id %>" ><%= production_detail.rom %></span>
+					, <span id = "color-<%= production_detail.id %>" ><%= production_detail.ram %></span>
+				</td>
+
+
+				<td class="cart_quantity"  >
+					<div class="cart_quantity_button">
+						
+						<%= order_detail.quantity %>
+						
+					</div>
+				</td>
+				<td class="cart_total">
+					<p id="cart_total_price-<%= production_detail.id %>"><%= number_to_currency(production_detail.price*order_detail.quantity.to_i)%> </p>
+				</td>
+				
+			</tr>
+
+	<% end %>	
+	
+<% end %>

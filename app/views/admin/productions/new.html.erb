@@ -4,6 +4,12 @@
 		<p><%= f.text_field :name , class: 'form-control', placeholder: 'production name' %></p>
 		<p><%= f.label :brand %></p>
 		<p><%= f.select :brand, options_for_select(Production.brands) %></p>
+		<p>
+			<%= f.text_field :url, class: 'form-control', placeholder: 'image_url' %>
+		</p>
+		<p>
+			<%= f.file_field :image %>
+		</p>
 		<%= f.fields_for :production_details do |production_detail| %>
 			<%= render 'production_detail_fields', f: production_detail %>
 		<% end %>

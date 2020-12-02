@@ -58,3 +58,7 @@ gem 'jquery'
 gem 'font-awesome-sass'
 gem "cocoon"
 gem 'jquery-rails'
+gem 'devise'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+gem 'active_storage_validations'

@@ -1,15 +1,57 @@
  <div class = "col-sm-9">
 	<div class="d-flex flex-column text-center col-sm-4 ">
 	  <div>
-	    <%= link_to image_tag("https://i.pinimg.com/736x/67/37/3d/67373d4d12004cc8337fcfe1226698de.jpg", width: "100%" ), production_path(@production), id: "count-#{@production.id}", class: "click-in-@production", data: {id: "#{@production.id}"} %>
+	  	<% if @production.url.present? %>
+	    <%= link_to image_tag( @production.url , width: "100%" ), production_path(@production), id: "count-#{@production.id}", class: "click-in-@production", data: {id: "#{@production.id}"} %>
+	    <% end %>
 	  <div class = ""><%= @production.name %></div>
 	  </div>
 	</div>
 	<div class="d-flex flex-column text-center col-sm-4 ">
-		<% @production.production_details.each do |detail| %>
-		<p>	Color: <button><%= detail.color %></button></p>
-		<p>Rom: <button> <%= detail.rom %></button></p>
-		<p>Ram: <button>	 <%= detail.ram %></button></p>
-		<% end %>
+	<div>
+		<span>Thông Số</span>
+		<p>Màu Sắc: </p>	
+		<p class = "color_select">
+		<% options_for_color.map do |c| %>
+			<label>
+				<input type = "radio" name="color" class = "color-button" 
+					value= "<%= c %>"  id = "color-<%= c %>" data-id = "<%=c %>" >
+				<span><%=c %></span>
+			</label> 
+		<% end %><br>
+	</p>
+		<p>Bộ Nhớ Trong: </p>
+	<p class = "rom_select" >
+		<% options_for_rom.map do |rom| %>
+			<label id = 'roms-<%=rom %>'>
+				<input type = "radio" name="rom" class = "rom-button" 
+					value= "<%= rom %>"  id = "rom-<%= rom %>" data-id = "<%=rom %>" >
+				<span><%=rom %></span>
+			</label> 
+		<% end %><br>
+	</p>
+	<p>Ram</p>		
+	<p class = "ram_select" >
+		<% options_for_ram.map do |ram| %>
+			<label id = 'rams-<%=ram %>'>
+				<input type = "radio" name="ram" class = "ram-button" 
+					value= "<%= ram %>"  id = "ram-<%= ram %>" data-id = "<%=ram%>" >
+				<span><%= ram %></span>
+			</label> 
+		<% end %><br>
+	</p>
+	</div>
+	
 	</div>	
+		<input type="number" name="quantity" value="1" id = "result-quantity" style = "width: 60px">
+		<button type="button" class="btn btn-fefault cart button-cart" style ="font-size: 15px;  ">
+			<i class="fa fa-shopping-cart"></i>
+			Add to cart
+		</button>	
 </div>
+<input type="hidden" name="production_id", id = "production_id", value = "<%= @production.id %>">
+<input type="hidden" name="cart" id = "cart_id" value = "<%= current_cart.id %>">
+<script type="text/javascript">
+
+	
+</script>

@@ -1,0 +1,42 @@
+<% if current_cart.content.present? %>
+	<% current_cart.content.each do|key, value| %>
+		<% production_detail= ProductionDetail.find_by id: key %>
+			<tr class ="xoa-<%= production_detail.id %>">
+			<td>
+				<%= image_tag("https://i.pinimg.com/736x/67/37/3d/67373d4d12004cc8337fcfe1226698de.jpg", width: "50px")%>
+			</td>	
+		
+			<td class="cart_description">
+				<h4><%= production_detail.production.name %></h4>
+			</td>
+			<td>
+				<span id = "unit-price-<%= production_detail.id %>"><%= production_detail.discount_price %></span>
+			</td>
+			<td>
+				<span>
+					<%= production_detail.color %>
+					<%= production_detail.rom %>
+					<%= production_detail.ram %>
+				</span>
+			</td>
+		
+			<td class="cart_quantity"  >
+				<!-- <div class="cart_quantity_button">
+					<button class="add-key" data-iddetail="<%= production_detail.id %>"  
+						> + </button>
+					<input style ="width: 30px" class="quantity-<%= production_detail.id %>" name="quantity" value= "<%= value  %>" autocomplete="off" >
+					<button class="minus-key" data-iddetail="<%= production_detail.id %>" > - </button>
+				</div> -->
+				<%= value %>
+			</td>
+			<td>
+					<span id = "cart_total_price-<%= production_detail.id%>"><%= number_to_currency(production_detail.price * value.to_i)%></span>
+			</td>
+			
+			<td class="cart_delete-<%= production_detail.id %>">
+				<button class="delete-product" data-id = "<%= current_cart.id %>" data-production_detail = "<%=production_detail.id%>">X</button>
+			</td>
+		</tr>
+	<%end%>
+
+<%end%>

@@ -1,5 +1,5 @@
-class Admin::ProductionsController < ApplicationController
-	before_action :set_production, only: [:show]
+class Admin::ProductionsController < Admin::ApplicationController
+	before_action :set_production, only: [:show, :edit,:update]
 
 	def index
 
@@ -20,6 +20,16 @@ class Admin::ProductionsController < ApplicationController
 	end
 	def show
 
+	end
+	def edit
+
+	end
+
+	def update
+		pr = produciton_params.merge(brand: params[:brand].to_i)
+		if @production.update! pr
+			redirect_to @production
+		end	
 	end	
 
 	private
@@ -27,6 +37,6 @@ class Admin::ProductionsController < ApplicationController
 		@production = Production.find_by id: params[:id]
 	end	
 	def produciton_params
-		params.require(:production).permit(:name, :brand, production_details_attributes: [:color, :rom,:ram, :product_id, :_destroy])
+		params.require(:production).permit(:name,:image ,:brand, :url, production_details_attributes: [:color, :rom,:ram, :product_id, :_destroy,:price])
 	end	
 end	
