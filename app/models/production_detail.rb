@@ -7,6 +7,7 @@ class ProductionDetail < ApplicationRecord
 	validates :ram, presence: true
 	validates :rom, presence: true
 	validates :price, presence: true
+	scope :order_by_discount,-> {order(:discount, :desc)}
 	def discount_price
     if self.discount.present?
         self.price -= self.price* self.discount / 100

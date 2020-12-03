@@ -30,7 +30,7 @@
 				<%= value %>
 			</td>
 			<td>
-					<span id = "cart_total_price-<%= production_detail.id%>"><%= number_to_currency(production_detail.price * value.to_i)%></span>
+					<span id = "cart_total_price-<%= production_detail.id%>"><%= number_to_vnd(production_detail.price * value.to_i)%></span>
 			</td>
 			
 			<td class="cart_delete-<%= production_detail.id %>">

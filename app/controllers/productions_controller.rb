@@ -1,6 +1,10 @@
 class ProductionsController < ApplicationController
   def index
-
+    @productions = Production.all.pagination(page: params[:page], per_page: 12)
+    @pages = @producitons.send(params['page'])
+    render json: {
+      data_page: @pages
+    }
   end
 
   def show

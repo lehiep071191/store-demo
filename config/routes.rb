@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'productions/show'
   root 'pages#home'
   get '/home', to: 'pages#home'
-  get 'pages/help'
+  get '/help', to: 'pages#help'
   get 'pages/contact'
   resources :users, only: [:show]
   resources :productions, only: [:index, :show]
