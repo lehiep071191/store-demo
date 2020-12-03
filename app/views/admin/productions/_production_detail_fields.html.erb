@@ -3,9 +3,17 @@
 	<p><%= f.text_field :rom, class: 'form-control',placeholder: 'rom'  %></p>
 	<p><%= f.text_field :ram, class: 'form-control',placeholder: 'ram' %></p>
 	<p>
-		<%= f.label :price %><%= f.number_field :price, class: 'form-control' %></p>
+		<%= f.label :price %><%= f.number_field :price, class: 'form-control' %>
+			
+	</p>
 
 	<p>
-		<%= f.label :discount %><%= f.number_field :discount, class: 'form-control' %></p>
+		<%= f.label :discount %><%= f.number_field :discount, class: 'form-control' %>
+			
+	</p>
+	<p>
+		<%= f.label :quantity %><%= f.number_field :quantity, class: 'form-control' %>
+			
+	</p>	
 	<p> <%= link_to_remove_association "remove address", f %></p>
 </div>

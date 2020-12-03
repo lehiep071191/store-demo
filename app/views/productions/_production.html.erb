@@ -1,0 +1,10 @@
+<div class="d-flex flex-column text-center col-sm-2">
+  <div>
+  	<% if production.url.present? %>
+    	<%= link_to image_tag( production.url, width: "100%" ), production_path(production), id: "count-#{production.id}", class: "click-in-production", data: {id: "#{production.id}"} %>
+    <% else %>
+    	<%= link_to image_tag('https://cdn.tgdd.vn/Products/Images/42/213033/iphone-12-pro-max-195420-015412-400x400.png', width: "100%" ), production_path(production), id: "count-#{production.id}", class: "click-in-production", data: {id: "#{production.id}"} %>
+    <% end %>
+  	<div class = ""><%= production.name %></div>
+  </div>
+</div>

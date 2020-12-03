@@ -37,6 +37,6 @@ class Admin::ProductionsController < Admin::ApplicationController
 		@production = Production.find_by id: params[:id]
 	end	
 	def produciton_params
-		params.require(:production).permit(:name,:image ,:brand, :url, production_details_attributes: [:color, :rom,:ram, :product_id, :_destroy,:price])
+		params.require(:production).permit(:name,:image,:description ,:brand, :url, production_details_attributes: [:color, :rom,:ram, :product_id, :_destroy,:price, :quantity])
 	end	
 end	

@@ -19,7 +19,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class = "text-lg">
+  <body class = "text-lg" >
     <%= render 'layouts/header'%>
     <div class="container-fluid">
       <p class="notice"><%= notice %></p>
@@ -29,6 +29,14 @@
        <div class= "container-fluid " style = "margin-top: 10px;  ">      
              <%= yield %>    
       </div>
+     <%= render '/layouts/footer' %> 
     </div>
   </body>
 </html>
+
+
+<script type="text/javascript">
+  $('b').mouseenter(function(){
+    $('b').attr("color", "yellow");
+  })
+</script>

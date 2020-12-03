@@ -5,6 +5,10 @@
 		<p><%= f.label :brand %></p>
 		<p><%= f.select :brand, options_for_select(Production.brands) %></p>
 		<p>
+			<%= f.label :description %>
+			<%= f.text_field :description , class: 'form-control'%>
+		</p>
+		<p>
 			<%= f.text_field :url, class: 'form-control', placeholder: 'image_url' %>
 		</p>
 		<p>
