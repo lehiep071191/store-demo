@@ -66,6 +66,10 @@ GEM
     bindex (0.8.1)
     bootsnap (1.5.1)
       msgpack (~> 1.0)
+    bootstrap (4.5.3)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.14.3, < 2)
+      sassc-rails (>= 2.0.0)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
@@ -131,6 +135,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (1.2.3)
+    popper_js (1.16.0)
     public_suffix (4.0.6)
     puma (4.3.6)
       nio4r (~> 2.0)
@@ -207,6 +212,9 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    turbo-sprockets-rails3 (0.2.9)
+      railties (>= 3.1.0)
+      sprockets (>= 2.0.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -241,6 +249,7 @@ PLATFORMS
 DEPENDENCIES
   active_storage_validations
   bootsnap (>= 1.4.2)
+  bootstrap
   bootstrap-sass
   bootstrap-will_paginate
   byebug
@@ -263,6 +272,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
+  turbo-sprockets-rails3
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)

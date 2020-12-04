@@ -1,2 +1,58 @@
 <h1>Pages#contact</h1>
 <p>Find me in app/views/pages/contact.html.erb</p>
+<div class = "container">
+	
+	<div id = "my-produtions">
+		<%= render @productions %>
+	</div>
+	
+</div>
+<center>
+	
+	<div>
+		<%= link_to 'backless', contact_path, class: 'btn btn-default'%>
+		<button class = "loadmore btn btn-default">loadmore</button>
+		<input type="hidden" name="load" id = 'load' value = "">
+	</div>
+</center>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var i = 0
+		$('.loadmore').click(function(){
+			i += 1
+			$('#load').val(i)
+			$.ajax({
+				url: '/infors',
+				type: 'get',
+				dataType: 'json',
+				data: {
+					offset: parseInt($('#load').val()) * 6
+				},
+				success: function(data) {
+					$('#my-produtions').append(data.pages)
+				}
+			})
+		})
+	})
+
+
+
+	// $(document).on('turbolinks:load', function(){
+	// 	$('.pages').click(function(){
+	// 		debugger
+	// 		var page = $(this).data('id');
+	// 		$.ajax({
+	// 			url: '/infors',
+	// 			type: 'get',
+	// 			dataType: 'json',
+	// 			data: {
+	// 				page: page
+	// 			},
+	// 			success: function(data){
+	// 				$('#my-produtions').html(data.pages)
+			
+	// 			}
+	// 		})
+	// 	})
+	// })
+</script>

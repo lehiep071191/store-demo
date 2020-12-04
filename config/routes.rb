@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'infors/show'
   get 'update_details/update'
   get 'users/show'
   get 'admin/home', to: 'admin/pages#index'
@@ -13,12 +14,13 @@ Rails.application.routes.draw do
   root 'pages#home'
   get '/home', to: 'pages#home'
   get '/help', to: 'pages#help'
-  get 'pages/contact'
+  get '/contact', to: 'pages#contact'
   resources :users, only: [:show]
   resources :productions, only: [:index, :show]
   resources :production_details, only: [:index, :show]
   resources :carts
   resources :orders
+  resources :infors
   namespace :admin do
     resources :orders
   	resources :productions

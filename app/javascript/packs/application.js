@@ -18,6 +18,7 @@ import "@fortawesome/fontawesome-free/js/all";
 import 'packs/addtocart.js'
 import 'packs/order_show.js'
 import 'packs/orderadmin.js'
+// import 'packs/pagination.js'
 
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
