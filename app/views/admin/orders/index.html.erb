@@ -25,6 +25,7 @@
                 </button>
                 <ul class="dropdown-menu">
                   <%@order_status.each do |order_status, value|%>
+      
                     <li class = "update-status" data-id = "<%= value %>" >
                       
                       <a><%= order_status%></a></li>

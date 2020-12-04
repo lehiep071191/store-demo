@@ -1,4 +1,10 @@
-
+<% Order.order_deliver.each do |order| %>
+<p>
+  <% order.order_details.each do |detail| %>
+   <%= detail.production_detail.production.name %>: <%= detail.quantity %>,
+  <% end %></p>
+   
+<% end %>
 
 
 

@@ -1,1 +1,3 @@
-index.html.erb
+<%= column_chart Order.group(:order_status).count %>
+<%= line_chart Order.group_by_day(:created_at).count %>
+<%= pie_chart OrderDetail.group(:quantity).count %>
