@@ -9,6 +9,9 @@ require("@rails/activestorage").start()
 require("channels")
 require("@nathanvda/cocoon")
 require('admin-lte')
+require("chartkick")
+require("chart.js")
+
 import 'bootstrap';
 import '../stylesheets/application.scss';
 import "@fortawesome/fontawesome-free/js/all";

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'update_details/update'
   get 'users/show'
   get 'admin/home', to: 'admin/pages#index'
   devise_for :users

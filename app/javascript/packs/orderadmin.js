@@ -6,7 +6,6 @@ $(document).on('turbolinks:load', function() {
 
 $(document).on('turbolinks:load', function(){
   $('.update-status').click(function () { 
-  	debugger
     alert("Update the status of these orders");
 
     var order_status_id = $(this).data('id');
@@ -14,6 +13,7 @@ $(document).on('turbolinks:load', function(){
     $("input[name='order']:checked").each(function(){
           order_ids.push(this.value);
     });
+      debugger
     $.ajax({
       url: '/admin/orders/'+ order_ids,
       type: 'POST',

@@ -6,4 +6,7 @@ class Order < ApplicationRecord
  	scope :status, -> (order_status) {where(order_status: order_status)}
  	enum order_status: {"Awaiting" =>0, "Cancelseller" => 1, "Accepted" => 2, "Processing" => 3,
             "Shipping" => 4, "Delivered" => 5, "Refunded" => 6,"Cancelbuyer"=>7} 
+    scope :order_deliver, ->  {where order_status: 5}        
+         
+
 end
