@@ -1,3 +1,8 @@
+<style type="text/css">
+  #dialog-infor{
+    border: none;
+  }
+</style>
 <% Order.order_deliver.each do |order| %>
 <p>
   <% order.order_details.each do |detail| %>
@@ -30,6 +35,8 @@
                   <div class="d-flex flex-column text-center col-sm-2">
                     <div>
                       <% if production.url.present? %>
+                    <dialog id = "dialog-infor<%= production.id %>" style = "display: none" open></dialog>
+
                         <%= link_to image_tag( production.url, width: "100%" ), production_path(production), id: "count-#{production.id}", class: "click-in-production", data: {id: "#{production.id}"} %>
                       <% else %>
                         <%= link_to image_tag('https://cdn.tgdd.vn/Products/Images/42/213033/iphone-12-pro-max-195420-015412-400x400.png', width: "100%" ), production_path(production), id: "count-#{production.id}", class: "click-in-production", data: {id: "#{production.id}"} %>
@@ -59,13 +66,50 @@
   </div>
 </div>
 
+<div>
+  
+  <%= render @productions %>
+</div>
 <script type="text/javascript">
-  $('.production-carousel').mouseenter(function(){
-    debugger
-    $('#linkcarousel').show();
+  $(document).ready(function(){
+
+    $('#clicksub').click(function(){
+       debugger 
+      var array1 = [1, 2, 3, 4, 5, 6];
+      var array2 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      var difference = [];
+
+      $.grep(array2, function(el) {
+              if ($.inArray(el, array1) == -1) {difference.push(el);}
+      });
+      $('.array-text').html('<button>'+difference+'</button>')
+    })
+   
+ 
   })
-   $('.production-carousel').mouseleave(function(){
-    $('#linkcarousel').hide();
+  $('.click-in-production').mouseenter(function(){
+    var id = $(this).data('id');
+    var x = $('#dialog-infor'+id)
+    debugger
+    $.ajax({
+      url: '/infors/'+id,
+      type: 'get',
+      dataType: 'json',
+      data: {
+        id: id
+      }, 
+      success: function(data){
+        debugger
+          x.show()
+          x.html('<p>' + data.name + '</p>'+'<p>' + data.roms + '</p>'+'<p>' + data.rams + '</p>');
+      }
+    })
+  })
+   $('.click-in-production').mouseleave(function(){
+    var id = $(this).data('id');
+    var x = $('#dialog-infor'+id)
+    x.hide()
+      
   })
 
 </script>

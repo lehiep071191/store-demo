@@ -27,4 +27,7 @@ module ApplicationHelper
   def array_production
   	Production.all.limit(24).each_slice(4).to_a
   end
+  def array_production2
+  	Production.all.each_slice(6).to_a
+  end
 end

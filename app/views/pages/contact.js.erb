@@ -1,0 +1,7 @@
+$('#my-productions').append('<%= j render @productions %>');
+<% if @posts.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @productions %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>

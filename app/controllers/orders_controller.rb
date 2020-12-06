@@ -7,9 +7,10 @@ class OrdersController < ApplicationController
 		@order.order_details.new
 	end
 	def index
-		orders= current_user.orders
+		orders = current_user.orders
 	end
 	def show
+	
 	end
 
 	def create
