@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+    before_action :authenticate_user!, only: :help 
   def home
   	@productions = Production.all.paginate(:page => params[:page], :per_page => 12)
 
@@ -7,6 +8,11 @@ class PagesController < ApplicationController
   def help
   	# @productions = Production.all
   	@productions = Production.limit(6).offset(params[:page])
+    session[:conversations] ||= []
+
+    @users = User.all.where.not(id: current_user.id)
+    @conversations = Conversation.includes(:recipient, :messages)
+                                 .find(session[:conversations])
   end
 
 
