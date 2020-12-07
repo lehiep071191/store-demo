@@ -73,3 +73,6 @@ gem 'bootstrap-will_paginate'
 gem 'active_storage_validations'
 gem "chartkick"
 gem 'groupdate'
+gem 'faker'
+gem 'redis'
+gem 'sidekiq'
