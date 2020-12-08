@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'searches/index'
   mount ActionCable.server => '/cable'
 
   get 'messages/new'
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :orders
   resources :infors
+  resources :searches
   resources :conversations, only: [:create] do
     member do
       post :close

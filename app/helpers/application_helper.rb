@@ -30,4 +30,7 @@ module ApplicationHelper
   def array_production2
   	Production.all.each_slice(6).to_a
   end
+  def link
+  	
+  end	
 end

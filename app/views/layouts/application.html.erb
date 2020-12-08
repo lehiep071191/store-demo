@@ -22,9 +22,36 @@
   <body class = "text-lg" >
     <%= render 'layouts/header'%>
     <div class="container-fluid">
+      <div style = "float:right; margin-top: 30px">
+        <input type="text" id = "value-search" placeholder="Search.." name="q[name_cont]">
+        <button type="button" id = "search" data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i></button>
+      </div>
+      <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">search result</h4>
+        </div>
+        <div class="modal-body">
+       
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default close-modal" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+        
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     </div>
+        
     <div class = "container">   
        <div class= "container-fluid " style = "margin-top: 10px;  ">      
              <%= yield %>    
