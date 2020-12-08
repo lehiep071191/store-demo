@@ -18,5 +18,7 @@ consumer.subscriptions.create("MessageChannel", {
     }else{
       $('#conversation-'+id).append('<li>'+'<div class = "row">'+'<div class = "message-received">'+data.content+'</div>'+'</div>'+'</li>')
     }
+
+    $('#message_body'+user_id).val("")
   }
 });

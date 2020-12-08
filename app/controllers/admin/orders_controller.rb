@@ -24,7 +24,7 @@ class Admin::OrdersController < Admin::ApplicationController
 	
 	
 	def update		
-		byebug
+
 		pr = params[:id].split(",").map{ |id| id.to_i }
 
 		if Order.update(pr, pr.map{ |id| {order_status: params[:order_status].to_i}})

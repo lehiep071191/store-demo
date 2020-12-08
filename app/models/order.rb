@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
 	belongs_to :user
-	has_many :order_details
+	has_many :order_details, dependent: :destroy
 	accepts_nested_attributes_for :order_details
 	scope :order_by_time, -> (val){order(created_at: :desc) if val == "newest"}
  	scope :status, -> (order_status) {where(order_status: order_status)}
